@@ -3,14 +3,17 @@
 <head>
 <title>Ball Game</title>
 <script>
-if (window.DeviceOrientationEvent) {
-   console.log("Device supports tilt");
+//checking if browser supports the script
+if(navigator.userAgent.indexOf("Chrome") != -1){
+   console.log("Agent is Chrome");
+   document.write('<script src="player.js"><\/script>');
+   document.write('<script src="index.js"><\/script>');
 } else {
-    document.body.innerHTML = "<h3>Sorry, your device doesn't support tilt detection.";
+    window.onload = ()=>{
+        document.body.innerHTML = "<h3>Sorry, game currently works only in Chrome browser.</h3>"
+    };
 }
 </script>
-<script src="player.js"></script>
-<script src="index.js"></script>
 <style>
     * { margin: 0; padding: 0;}
     body, html { 
@@ -71,7 +74,7 @@ if (window.DeviceOrientationEvent) {
         margin-bottom: 100px;
     }
     #end{
-        display: block; /* show by default */
+        display: none; /* show by default */
         position: fixed; /* Stay in place */
         z-index: 1; /* Sit on top */
         /*center*/
