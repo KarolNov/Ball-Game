@@ -2,6 +2,13 @@
 <html>
 <head>
 <title>Ball Game</title>
+<script>
+if (window.DeviceOrientationEvent) {
+   console.log("Device supports tilt");
+} else {
+    document.body.innerHTML = "<h3>Sorry, your device doesn't support tilt detection.";
+}
+</script>
 <script src="player.js"></script>
 <script src="index.js"></script>
 <style>
@@ -64,7 +71,7 @@
         margin-bottom: 100px;
     }
     #end{
-        display: none; /* show by default */
+        display: block; /* show by default */
         position: fixed; /* Stay in place */
         z-index: 1; /* Sit on top */
         /*center*/
@@ -83,6 +90,19 @@
         font-size: 60px;
         margin-top: 20px;
     }
+    #restart{
+        background: #555555;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        width: 50%;
+        font-size: 60px;
+        margin: 40px;
+        cursor: pointer;
+    }
 </style>
 </head>
 <body>
@@ -99,6 +119,7 @@
     <div id="end">
         <h3>CONGRATULATIONS</h3>
         <h3 id="score"></h3>
+        <button id="restart">Replay game</button>
     </div>
 </body>
 </html> 

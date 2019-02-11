@@ -10,7 +10,7 @@ class Player {
     }
 
     handleOrientation(event) {
-        var easing = 0.05;
+        var easing = 0.15;
         var xAng = event.gamma;  // In degrees in the range [-180,180]
         var yAng = event.beta; // In degrees in the range [-90,90]
 

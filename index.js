@@ -32,12 +32,15 @@ function modalCounterClose(){
 }
 
 function init(){
-    //initializing game - adding event listener for tilt, resizing canvas to window inner size, creating random targets
+    //initializing game - adding event listener for tilt, resizing canvas to window inner size, creating random targets etc.
     window.addEventListener('deviceorientation', handleTilt);
     canvas = document.getElementById('game');
     ctx = canvas.getContext('2d');
     resizeCanvas();
     targets = initilizeTargets(10);
+    timer = 0;
+    let end = document.getElementById('end');
+    end.style.display = 'none';
 }
 
 function handleTilt(event){
@@ -125,9 +128,16 @@ function draw() {
         clearInterval(interval);
         let divEnd = document.getElementById('end');
         let score = document.getElementById('score');
+        let restart = document.getElementById('restart');
         //show end of game
         divEnd.style.display = 'block';
         score.innerHTML = `Your time is </br> ${timer/1000} seconds`;
+        restart.onclick = ()=>{
+            let counter = document.getElementById('counter');
+            counter.style.display = 'block';
+            countdown();
+            modal = setTimeout(modalCounterClose, 3000);
+        }
     }
 
     //redrawing canvas
